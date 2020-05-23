@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return 'Hello, World!'
+    return 'Hello, World!<br><a target="_blank" href="index">index</a>'
 
 
 @app.route('/index')
