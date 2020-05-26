@@ -33,8 +33,8 @@ n = int(input())
 cat_found = False
 
 for i in range(n):
-    message = input().lower()
-    if 'кот' in message:
+    message = input()
+    if 'кот' in message or 'Кот' in message:
         print('МЯУ')
         cat_found = True
         break
