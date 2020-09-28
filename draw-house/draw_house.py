@@ -2,7 +2,19 @@ from graph.graph import *
 
 
 def main():
-    draw_house(200, 200, 300, 300)
+    house = draw_house(200, 200, 300, 300)
+
+    def move_left(event):
+        for i in house:
+            moveObjectBy(i, -5, 0)
+
+    def move_right(event):
+        for i in house:
+            moveObjectBy(i, 5, 0)
+
+    onKey('Left', move_left)
+    onKey('Right', move_right)
+
     run()
 
 
@@ -21,8 +33,10 @@ def draw_house(x, y, width, height):
 
     window_x = x + width // 2
     window_y = y + wall_height // 2
-    window_radius = wall_height // 2
+    window_radius = wall_height // 4
     window = draw_window(window_x, window_y, window_radius)
+
+    return wall, roof, window
 
 
 def draw_wall(x, y, width, height):
@@ -38,10 +52,6 @@ def draw_roof(x, y, width, height):
 def draw_window(x, y, radius):
     brushColor('white')
     return circle(x, y, radius)
-
-
-def move_left(event):
-    moveObjectBy(wall, -5, 0)
 
 
 main()
