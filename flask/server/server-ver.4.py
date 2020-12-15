@@ -34,7 +34,7 @@ def index():
     return render_template('index.html', **user)  # nickname='Арсений'
 
 
-@app.route('/day-<num>')
+@app.route('/day-<num>.html')
 def day(num):
     return render_template(f'day-{num}.html')
 
