@@ -2,9 +2,15 @@
 
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 server = Flask(__name__)
+# Добавить словарь messages
+messages = [
+    {'username': 'dim-akim', 'text': 'Здравствуйте!'},
+    {'username': 'fomin-k', 'text': 'Добрый день!'},
+    {'username': 'kaleda-s', 'text': 'И вам не хворать!'}
+]
 
 
 @server.route('/')  # декоратор, который назначает путь
@@ -14,9 +20,13 @@ def hello():  # функция представления
     <a target="_blank" href="index">index</a>'''
 
 
-# Добавить URL для ловли GET-запросов
 # Добавить новый файл для отправки запросов и чтения ответов
 # Нужна библиотека requests
+@server.route('/get_messages')
+def get_messages():
+    return {
+        'messages': messages
+    }
 
 
 @server.route('/index')
