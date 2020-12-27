@@ -70,5 +70,40 @@ def get_schedule_week():
     return 'На неделе будет МЯСО'
 
 
+def create_homework(subject, day, homework):
+    pass
+    # магия, которая записывает это все в Excel
+
+
+def get_subject():
+    subject = input('Введите предмет: ')
+    return subject
+
+
+def get_day(subject):
+    # поиск дней в таблице, где есть этот предмет
+    days = (2, 3), (4, 5)
+
+    for i in range(len(days)):
+        column, row = days[i]
+        weekday = page.cell(column=column, row=1)
+        lesson_time = page.cell
+        print(f'{i+1}: {weekday} в {lesson_time}')
+    choice = input(f'Выберите один из вариантов: ')
+    return days[choice - 1]
+
+
+def get_homework():
+    homework = input('Введите предмет: ')
+    return homework
+
+
+def get_student_choice():
+    subject = get_subject()
+    day = get_day(subject)
+    homework = get_homework()
+    create_homework(subject, day, homework)
+
+
 if __name__ == '__main__':
     main()
