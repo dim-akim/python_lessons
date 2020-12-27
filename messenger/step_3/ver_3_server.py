@@ -1,9 +1,11 @@
 """
-3 шаг. Функционал мессенджера
+3 шаг. Функционал мессенджера: отправка сообщений
 
 Этапы:
 
-Словарь пользователей и паролей
+Изменение структуры сообщения - добавляем поле для метки времени timestamp
+
+Функция, которая принимает сообщение и записывает его в список messages, добавляя метку времени
 
 Для работы с сервером нужны модули sender и getter
 """
@@ -21,11 +23,6 @@ messages = [
     {'username': 'Nancy', 'text': 'How are you?', 'timestamp': time.time()}
 ]
 
-users = {
-    'Jack': '12345',
-    'Nancy': '12345'
-}
-
 
 @app.route('/')
 def hello():
@@ -40,8 +37,7 @@ def status():
         'server_start_time': server_start,
         'server_current_time': datetime.now().strftime('%H:%M:%S %d/%m/%Y'),
         'current_time': time.time(),
-        'messages': len(messages),
-        'users': len(users)
+        'messages': len(messages)
     }
 
 
