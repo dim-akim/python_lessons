@@ -69,7 +69,8 @@ def get_schedule_today(weekday_column):
     print(page.cell(row=1, column=weekday_column).value)
     print('__________________')
     for row in lesson_rows:
-        print(page.cell(row=row, column=weekday_column).value, end='\t\t')
+        time = page.cell(row=row, column=1).value
+        print(time, '\t', page.cell(row=row, column=weekday_column).value, end='\t\t')
         for i in range(1, 3):
             if page.cell(row=row, column=weekday_column + i).value is not None:
                 print(page.cell(row=row, column=weekday_column + i).value, end='\t\t')
@@ -115,6 +116,7 @@ def get_homework_today(weekday_column):
     print(page.cell(row=1, column=weekday_column).value)
     print('__________________')
     for row in homework_rows:
+        print(page.cell(row=row-1, column=weekday_column).value, end='\t\t')
         print(page.cell(row=row, column=weekday_column).value, end='\t\t')
         for i in range(1, 3):
             if page.cell(row=row, column=weekday_column + i).value is not None:
@@ -125,6 +127,7 @@ def get_homework_today(weekday_column):
 
 def get_homework_tomorrow(weekday_column):
     get_homework_today(weekday_column + 3)
+    print('__________________')
 
 
 def get_homework_week():
@@ -135,15 +138,22 @@ def get_homework_week():
 
 
 def find_subject(lesson):
+    # определяет координаты урока введенного пользователем
     result = []
     for column in weekday_column.values():
         for row in lesson_rows:
             if page.cell(row=row, column=column).value == lesson:
                 result.append((column, row))
+    if len(result) > 1:
+        result = choice_lesson(result)
+    else:
+        result = result[0]
+
     return result
 
 
 def get_lesson_name():
+    # Пользователь вводит название предмета
     lesson = input('Введите название предмета: \n')
     lesson = lesson.lower()
     return lesson
@@ -151,7 +161,33 @@ def get_lesson_name():
 
 def create_homework():
     lesson = get_lesson_name()
-    days = find_subject(lesson)
+    content = get_content()
+    column, row = find_subject(lesson)
+    page.cell(row=row+1, column=column).value = content
+    file.save('расписание.xlsx')
+
+
+def get_content():
+    # Пользователь вводит само задание
+    content = input('Введите задание: \n')
+    return content
+
+
+def choice_lesson(result):
+    # Пользователь выбирает из найденых уроков к какому прицепить дз
+    print('Выберите урок, к которому прикрепить ДЗ')
+    lesson_number = 1
+    for col, row in result:
+        day = page.cell(row=1, column=col).value
+        time = page.cell(row=row, column=1).value
+        print(f'{lesson_number}: {day} в {time}')
+        lesson_number += 1
+    number = int(input('Введите ваш выбор: '))
+    return result[number - 1]
+
+
+def write_homework(days):
+    print()
 
 
 if __name__ == '__main__':

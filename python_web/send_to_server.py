@@ -1,8 +1,14 @@
 import requests
 
 
-response = requests.get('http://127.0.0.1:5000/get_messages')
+# Создаем сообщение
+username = input('Твое имя: ')
 
-for message in response.json()['messages']:
-    print(message)
+while True:
+    text = input('Введи текст сообщения: ')
 
+    # Запаковываем сообщение в GET-запрос
+    requests.get(
+        'http://127.0.0.1:5000/send_message',
+        json={'username': username, 'text': text}
+    )
