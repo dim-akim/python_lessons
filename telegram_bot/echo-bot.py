@@ -1,5 +1,5 @@
-from telegram import Bot, Update
-from telegram.ext import MessageHandler, Filters, Updater, CommandHandler
+from telegram import Bot, Update, ReplyKeyboardMarkup
+from telegram.ext import MessageHandler, Filters, Updater, CommandHandler, CallbackContext
 from telegram_bot.settings import TOKEN, ADMIN_IDS
 
 
@@ -30,7 +30,7 @@ def main():
     updater.idle()
 
 
-def do_echo(update: Update, context):
+def do_echo(update: Update, context: CallbackContext) -> None:
     """
     Отправляет в чат эхо: id написавшего и текст сообщения
     :param update:
@@ -69,7 +69,7 @@ def admin_access(f):
 
 
 @admin_access
-def secret_command(update: Update, context):
+def secret_command(update: Update, context: CallbackContext) -> None:
     reply_text = f'Секретик!'
     update.message.reply_text(
         text=reply_text
