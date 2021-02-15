@@ -38,4 +38,15 @@ N — количество пользователей (натуральное ч
 
 with open('26_demo.txt') as file:
     s, n = [int(i) for i in file.readline().strip('\n').split()]
-    data = [line.strip('\n') for line in file]
+    data = [int(line.strip('\n')) for line in file]
+    data.sort()
+    summa = 0
+    for i in range(n):
+        if summa + data[i] <= s:
+            summa += data[i]
+        else:
+            break
+    count = i
+    max_num = data[i]
+    print(i, data[i], s, s - summa + data[i])
+    # for i in range(i, n):
