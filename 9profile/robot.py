@@ -12,6 +12,9 @@ while price:  # while price != 0
 
     elif i_have_stocks and price < before:
         price_max = price
+        i_have_stocks = not i_have_stocks
         break
 
-print(price_max, price_min, price_max - price_min)
+print(price_max)
+print(price_min)
+print(price_max - price_min)
