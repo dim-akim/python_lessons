@@ -27,11 +27,12 @@ import time
 
 while True:
     response = requests.get('http://127.0.0.1:5000/get_messages')
-    messages = response.json()['messages']
+    answer = response.json()
+    messages = answer['messages']
 
     for message in messages:
         print(message['username'])
         print(message['text'])
         print()
 
-    time.sleep(1)
+    time.sleep(.1)
