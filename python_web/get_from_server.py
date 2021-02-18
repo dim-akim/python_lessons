@@ -10,5 +10,9 @@ while True:
     )
 
     for message in response.json()['messages']:
-        print(message)
+        print(message['username'])
+        print(message['text'])
+        print()
         last_time = message['timestamp']
+
+    time.sleep(.5)
