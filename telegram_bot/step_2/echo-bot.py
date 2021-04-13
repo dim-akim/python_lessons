@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
 
-TOKEN = '1207559312:AAHr0Go-3LMv2VC8PQ9042g2tV4o3LV577o'
+TOKEN = '1207559312:AAHDYo5DYkZ4oOV9176U_VstPJpa6MttX_k'
 
 
 def main():
