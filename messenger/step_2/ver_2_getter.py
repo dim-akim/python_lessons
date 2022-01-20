@@ -35,4 +35,4 @@ while True:
         print(message['text'])
         print()
 
-    time.sleep(.1)
+    time.sleep(1)
