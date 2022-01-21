@@ -2,21 +2,27 @@
 <html lang="ru">
   <head>
       {% block head %}
-    <meta charset="utf-8">
-    <title>Сайт начинающего верстальщика</title>
-    <link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
+        <meta charset="utf-8">
+        <title>Сайт начинающего верстальщика</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
       {% endblock %}
   </head>
   <body>
     <header>
-      <h1>Сайт начинающего верстальщика: {{ nickname }}</h1>
-      <img class="avatar" src="{{ url_for('static', filename='img/raccoon.svg') }}" width="80" height="80" alt="Аватарка">
+      {% block header %}
+      <h1>Сайт начинающего верстальщика {{username}}</h1>
+      <a href={{ url_for('start') }}>
+        <img class="avatar" src="{{ url_for('static', filename='img/raccoon.svg') }}" width="80" height="80" alt="Аватарка">
+      </a>
+      {% endblock %}
     </header>
     <main>
-      {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
     </main>
     <footer>
-      Подвал сайта
+      {% block footer %}
+        Подвал сайта
+      {% endblock %}
     </footer>
   </body>
 </html>
