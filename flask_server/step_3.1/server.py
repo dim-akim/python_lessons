@@ -1,5 +1,5 @@
 """
-4.1 шаг. Использование шаблонов (вставляем значение в шаблон)
+3.1 шаг. Использование шаблонов (вставляем значение в шаблон)
 Шаблон - файл HTML с динамическими параметрами.
 Язык шаблонирования - Jinja2
 
@@ -20,15 +20,15 @@ app = Flask(__name__)
 def hello():
     return f'''Hello, World!
     <br>
-    <a target="_blank" href="index">index</a>'''
+    <a href="index">index</a>'''
 
 
 @app.route('/index')
 def index():
-    user = {'nickname': 'Арсений'}  # выдуманный пользователь
+    user = {'nickname': 'dim-akim'}  # выдуманный пользователь
 
     # return render_template('index.html', **user)  # другой вариант передачи именованного параметра
-    return render_template('index.html', nickname='Арсений')  # можно вставить nickname='Арсений'
+    return render_template('index.html', nickname='dim-akim')  # можно вставить nickname='dim-akim'
 
 
 if __name__ == '__main__':
