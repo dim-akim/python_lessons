@@ -26,13 +26,13 @@ app = Flask(__name__)
 def hello():
     return f'''Hello, World!
     <br>
-    <a target="_blank" href="index">index</a>'''
+    <a href="index">index</a>'''
 
 
 @app.route('/index')
 def index():
-    user = {'nickname': 'Арсений'}  # выдуманный пользователь
-    return render_template('index.html', **user)  # nickname='Арсений'
+    user = {'nickname': 'dim-akim'}
+    return render_template('index.html', **user)
 
 
 @app.route('/day-<num>')  # все, что находится в ссылке после 'day-', попадает в переменную num
