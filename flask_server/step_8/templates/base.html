@@ -14,6 +14,11 @@
       <a href={{ url_for('start') }}>
         <img class="avatar" src="{{ url_for('static', filename='img/raccoon.svg') }}" width="80" height="80" alt="Аватарка">
       </a>
+        {% block nav %}
+          <nav>
+            <a href={{ url_for('start') }}>На главную</a>
+          </nav>
+        {% endblock %}
       {% endblock %}
     </header>
     <main>
