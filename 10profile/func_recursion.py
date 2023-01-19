@@ -43,4 +43,40 @@ def gcd(a: int, b: int) -> int:
     return gcd(b-a, a)
 
 
-print(gcd(2700, 6))
+def gcd2(a: int, b: int) -> int:
+    print(a, b)  # отладочная печать
+    if b == 0:
+        return a
+
+    return gcd2(b, a % b)
+
+
+def gcd3(a: int, b: int) -> int:
+    return a if b == 0 else gcd3(b, a % b)
+
+
+def pow(a: int, b: int) -> int:
+    print(a, b)
+    if b == 0:
+        return 1
+    # условие-призрак b != 0
+    return a * pow(a, b-1)
+
+
+def pow2(a: int, b: int) -> int:
+    """
+    Быстро возводит число a в степень b.
+    Для четных b используется оптимизирующий прием
+    :param a:
+    :param b:
+    :return:
+    """
+    print(a, b)
+    if b == 0:
+        return 1
+    elif b % 2 > 0:
+        return a * pow2(a, b-1)
+    return pow2(a*a, b // 2)
+
+
+print(pow2(2, 10))

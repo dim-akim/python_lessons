@@ -4,7 +4,7 @@ class Human:
         self.name = name
         self.sex = sex
         self.is_married = False  # сделать приватным!
-        # self.spouse = None
+        self.spouse = None
 
     def says_hello(self):
         print(f'{self.name} приветствует тебя!')
@@ -33,8 +33,9 @@ class Female(Human):
         super().__init__(name, 'Ж')
 
 
-person1 = Male('Савелий')
-person2 = Female('Аглая')
+person1 = Male('Сережа')
+person2 = Male('Костя')
+person3 = Female('Таня')
 
 person1.marry(person2)
 print(person1.is_married)

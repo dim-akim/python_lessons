@@ -1,8 +1,8 @@
 import requests
 
 
-from_source = 'https://yandex.ru/search/?text=школа+1060'
+from_source = 'http://1060.ru'
 
 response = requests.get(from_source)
 
-print(response.content)
+print(response.text)
