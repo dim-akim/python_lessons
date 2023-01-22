@@ -12,9 +12,14 @@ def create_ball(x, y):
 
 
 def move(something):
-    print('Я подвинуль')
+    pos = something.position()
+    x = pos[0]
+    y = pos[1]
+
+    something.goto(x + 1, y)
+    print(pos)
 
 
-ball = create_ball(-400, 395)
+ball = create_ball(-100, 100)
 while True:  # Бесконечный цикл
     move(ball)

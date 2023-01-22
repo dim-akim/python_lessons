@@ -2,7 +2,13 @@ from turtle import *
 
 
 def create_ball(x, y):
-    print('Мячик создаль')
+    t = Turtle()
+    t.shape('circle')
+    t.speed(0)
+    t.up()
+    t.goto(x, y)
+
+    return t
 
 
 def move(something):
