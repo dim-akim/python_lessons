@@ -12,14 +12,19 @@ def create_ball(x, y):
 
 
 def move(something):
+    global speed_x
     pos = something.position()
     x = pos[0]
     y = pos[1]
 
-    something.goto(x + 1, y)
+    if x >= 465 or x <= -465:
+        speed_x = -speed_x
+
+    something.goto(x + speed_x, y)
     print(pos)
 
 
 ball = create_ball(-100, 100)
+speed_x = 1
 while True:  # Бесконечный цикл
     move(ball)
