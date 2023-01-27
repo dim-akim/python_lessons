@@ -43,7 +43,8 @@ def move_up_1():
     x = pos[0]
     y = pos[1]
 
-    player_1.goto(x, y + 10)
+    if y <= 395:
+        player_1.goto(x, y + 10)
 
 
 def move_down_1():
@@ -52,7 +53,8 @@ def move_down_1():
     x = pos[0]
     y = pos[1]
 
-    player_1.goto(x, y - 10)
+    if y >= -395:
+        player_1.goto(x, y - 10)
 
 
 def move_up_2():
@@ -61,7 +63,8 @@ def move_up_2():
     x = pos[0]
     y = pos[1]
 
-    player_2.goto(x, y + 10)
+    if y <= 395:
+        player_2.goto(x, y + 10)
 
 
 def move_down_2():
@@ -70,15 +73,27 @@ def move_down_2():
     x = pos[0]
     y = pos[1]
 
-    player_2.goto(x, y - 10)
+    if y >= -395:
+        player_2.goto(x, y - 10)
 
 
-def check_collision(ball, player):
+def check_collision_1(ball, player):
     global speed_x
     x_ball, y_ball = ball.position()
     x_player, y_player = player.position()
 
     if x_player-10 <= x_ball <= x_player+10 and y_player - 50 <= y_ball <= y_player + 50:
+        ball.goto(x_player+10, y_ball)
+        speed_x = -speed_x
+
+
+def check_collision_2(ball, player):
+    global speed_x
+    x_ball, y_ball = ball.position()
+    x_player, y_player = player.position()
+
+    if x_player-10 <= x_ball <= x_player+10 and y_player - 50 <= y_ball <= y_player + 50:
+        ball.goto(x_player-10, y_ball)
         speed_x = -speed_x
 
 
@@ -98,5 +113,5 @@ speed_y = 4
 
 while True:  # Бесконечный цикл
     move(ball)
-    check_collision(ball, player_1)
-    check_collision(ball, player_2)
+    check_collision_1(ball, player_1)
+    check_collision_2(ball, player_2)
