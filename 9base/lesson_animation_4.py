@@ -73,12 +73,25 @@ def move_down_2():
     player_2.goto(x, y - 10)
 
 
+def check_collisions_1(ball, player):
+    global speed_x
+    pos = player.position()  # Получаем позицию игрока
+    x_player = pos[0]
+    y_player = pos[1]
+    pos = ball.position()  # Получаем позицию мячика
+    x_ball = pos[0]
+    y_ball = pos[1]
+
+    if x_player-10 <= x_ball <= x_player+10 and y_player-50 <= y_ball <= y_player+50:
+        speed_x = -speed_x
+
+
 window = Screen()
 window.listen()  # Окно, слушай события!
 window.onkeypress(move_up_1, 'w')
 window.onkeypress(move_down_1, 's')
-window.onkeypress(move_up_1, 'Up')
-window.onkeypress(move_down_1, 'Down')
+window.onkeypress(move_up_2, 'Up')
+window.onkeypress(move_down_2, 'Down')
 
 player_1 = create_player(-400, 0)
 player_2 = create_player(400, 0)
@@ -89,3 +102,4 @@ speed_y = 4
 
 while True:  # Бесконечный цикл
     move(ball)
+    check_collisions_1(ball, player_1)
