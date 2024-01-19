@@ -1,45 +1,99 @@
-def div_count(n, divisor):
-    count = 0
-    while n % divisor == 0:
-        n //= divisor
-        count += 1
-    return count
+import turtle
 
+bob = turtle.Turtle()
+line = turtle.numinput("Размер линии", "Введите размер линии: от 17 до 170")
+radius = turtle.numinput("Размер радиуса", "Введите размер рдиуса: от 17 до 170")
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+# квадрат
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
 
-with open('27-B.txt') as file:
-    n = int(file.readline())
-    numbers = [int(line) for line in file]
+bob.color("black", wall_color)
+bob.begin_fill()
+bob.forward(line)
+bob.right(90)
+bob.forward(line)
+bob.right(90)
+bob.forward(line)
+bob.right(90)
+bob.forward(line)
+bob.end_fill()
+# 1круг
 
+bob.color("black", wall_color)
+bob.right(90)
+bob.forward(line / 2)
+bob.begin_fill()
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
+bob.circle(radius)
+bob.end_fill()
+# 2круг
 
-matrix_2_5 = [[0 for i in range(9)] for j in range(9)]
-# 2 по горизонтали, 5 по вертикали
+bob.color("black", wall_color)
+bob.forward(line / 2)
+bob.right(90)
+bob.forward(line / 2)
+bob.begin_fill()
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
+bob.circle(radius)
+bob.end_fill()
+# 3круг
 
-for number in numbers:
-    div_2 = div_count(number, 2)
-    if div_2 > 7:
-        div_2 = 8
-    div_5 = div_count(number, 5)
-    if div_5 > 7:
-        div_5 = 8
+bob.color("black", wall_color)
+bob.forward(line / 2)
+bob.right(90)
+bob.forward(line / 2)
+bob.begin_fill()
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
+bob.circle(radius)
+bob.end_fill()
+# 4круг
 
-    matrix_2_5[div_5][div_2] += 1
+bob.color("black", wall_color)
+bob.forward(line / 2)
+bob.right(90)
+bob.forward(line / 2)
+bob.begin_fill()
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
+bob.circle(radius)
+bob.end_fill()
 
-# cnt = 0
-# for number in numbers:
-#     if div_count(number, 2) == 1 and div_count(number, 5) == 0:
-#         cnt += 1
-
-# print(cnt)
-for line in matrix_2_5:
-    print(line)
-
-cnt = 0
-# i - 5, j - 2
-for i in range(9):
-    for j in range(9):
-        for k in range(9):
-            for m in range(9):
-                if i + k >= 7 and j + m == 7 or i + k == 7 and j + m >= 7:
-                    cnt += matrix_2_5[i][j] * matrix_2_5[k][m]
-
-print(cnt / 2)
+turtle.exitonclick()

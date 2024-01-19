@@ -75,10 +75,10 @@ def move_down_2():
 
 def check_collisions_1(ball, player):
     global speed_x
-    pos = player.position()  # Получаем позицию игрока
+    pos = player.position()  # Получаем координаты ракетки
     x_player = pos[0]
     y_player = pos[1]
-    pos = ball.position()  # Получаем позицию мячика
+    pos = ball.position()  # Получаем координаты мячика
     x_ball = pos[0]
     y_ball = pos[1]
 
