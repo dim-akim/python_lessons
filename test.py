@@ -1,58 +1,99 @@
 import turtle
 
-t = turtle.Turtle()
+bob = turtle.Turtle()
+line = turtle.numinput("Размер линии", "Введите размер линии: от 17 до 170")
+radius = turtle.numinput("Размер радиуса", "Введите размер рдиуса: от 17 до 170")
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+# квадрат
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
 
-#квадрат
+bob.color("black", wall_color)
+bob.begin_fill()
+bob.forward(line)
+bob.right(90)
+bob.forward(line)
+bob.right(90)
+bob.forward(line)
+bob.right(90)
+bob.forward(line)
+bob.end_fill()
+# 1круг
 
-t.forward (100)
-t.right(90)
-t.forward (100)
-t.right(90)
-t.forward (100)
-t.right(90)
-t.forward (100)
+bob.color("black", wall_color)
+bob.right(90)
+bob.forward(line / 2)
+bob.begin_fill()
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
+bob.circle(radius)
+bob.end_fill()
+# 2круг
 
-#треугольник
+bob.color("black", wall_color)
+bob.forward(line / 2)
+bob.right(90)
+bob.forward(line / 2)
+bob.begin_fill()
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
+bob.circle(radius)
+bob.end_fill()
+# 3круг
 
-t.up()
-t.forward (50)
-t.right(90)
-t.down()
-t.forward (100)
-t.left(120)
-t.forward(100)
-t.left(120)
-t.forward(100)
+bob.color("black", wall_color)
+bob.forward(line / 2)
+bob.right(90)
+bob.forward(line / 2)
+bob.begin_fill()
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
+bob.circle(radius)
+bob.end_fill()
+# 4круг
 
-#прямоугольник
+bob.color("black", wall_color)
+bob.forward(line / 2)
+bob.right(90)
+bob.forward(line / 2)
+bob.begin_fill()
+text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
+if text == "розовый":
+    wall_color = ("pink")
+elif text == "голубой":
+    wall_color = ("blue")
+elif text == "фиолетовый":
+    wall_color = ("violet")
+elif text == "жёлтый":
+    wall_color = ("yellow")
+bob.circle(radius)
+bob.end_fill()
 
-t.right(60)
-t.up()
-t.forward (50)
-t.down()
-t.forward (100)
-t.right(90)
-t.forward (50)
-t.right(90)
-t.forward (100)
-t.right(90)
-t.forward (50)
-
-#параллелограм
-
-t.up()
-t.forward (50)
-t.right(90)
-t.forward(50)
-t.down()
-t.left(120)
-t.forward(50)
-t.left(120)
-t.forward(50)
-t.left(120)
-t.forward(50)
-t.left(60)
-t.forward(50)
-t.right(240)
-t.forward(50)
 turtle.exitonclick()

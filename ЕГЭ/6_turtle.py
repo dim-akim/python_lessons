@@ -5,14 +5,30 @@ t = Turtle()
 t.speed(0)
 t.left(90)
 
-size = 40
-for i in range(10):
-    t.forward(5 * size)
-    t.right(60)
+size = 10
+for i in range(2):
+    t.fd(10*size)
+    t.rt(90)
+    t.fd(20 * size)
+    t.rt(90)
+t.up()
+t.fd(3*size)
+t.rt(90)
+t.fd(7*size)
+t.lt(90)
+t.down()
+for i in range(2):
+    t.fd(70*size)
+    t.rt(90)
+    t.fd(90 * size)
+    t.rt(90)
 
 t.up()
-for x in range(20):
-    for y in range(-5, 20):
-        t.goto(x * size, y * size)
-        t.dot(5)
-exitonclick()
+for _x in range(21):
+    for _y in range(11):
+        x = _x * size
+        y = _y * size
+        t.goto(x, y)
+        t.dot(4)
+
+mainloop()
