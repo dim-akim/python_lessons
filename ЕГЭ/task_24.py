@@ -47,20 +47,34 @@
 #                 max_length = max(max_length, length)
 #
 # print(max_length)
+#
+# with open('24 (2).txt') as file:
+#     lines = file.readline().split('E')
+# print(lines)
+# letters = {letter: 0 for letter in 'QWERTYUIOPASDFGHJKLZXCVBNM'}
+#
+# for line in lines:
+#     if line:
+#         letter = line[0]
+#         letters[letter] += 1
+#
+# answer = ('', 0)
+# for i in letters:
+#     if letters[i] > answer[1]:
+#         answer = (i, letters[i])
+#
+# print(answer)
 
-with open('24 (2).txt') as file:
-    lines = file.readline().split('E')
-print(lines)
-letters = {letter: 0 for letter in 'QWERTYUIOPASDFGHJKLZXCVBNM'}
+with open('24 (3).txt') as file:
+    letters = file.readline()
 
-for line in lines:
-    if line:
-        letter = line[0]
-        letters[letter] += 1
+indexes = [i for i in range(len(letters) - 1) if letters[i] + letters[i+1] == 'WW']
 
-answer = ('', 0)
-for i in letters:
-    if letters[i] > answer[1]:
-        answer = (i, letters[i])
+max_len = 0
+for i in range(len(indexes) - 102):
+    max_len = max(max_len, indexes[i + 102] - indexes[i])
 
-print(answer)
+print(indexes)
+print(max_len)
+# 0 1  2  3   4   5   6
+# 3 5 12 82 140 151 152
