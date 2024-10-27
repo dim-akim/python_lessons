@@ -1,99 +1,23 @@
-import turtle
+encrypted = [
+    ['11010000', '10010100', '11010000'],
+    ['10111100', '11010000', '10111000'],
+    ['11010001', '10000010', '11010001'],
+    ['10000000', '11010000', '10111000'],
+    ['11010000', '10111001', '00100000'],
+    ['11010000', '10010010', '11010000'],
+    ['10110000', '11010000', '10111011'],
+    ['11010000', '10110101', '11010001'],
+    ['10000000', '11010001', '10001100'],
+    ['11010000', '10110101', '11010000'],
+    ['10110010', '11010000', '10111000'],
+    ['11010001', '10000111', '11010001'],
+    ['10000011', '00100001', '00100000'],
+]
+decrypted = []
 
-bob = turtle.Turtle()
-line = turtle.numinput("Размер линии", "Введите размер линии: от 17 до 170")
-radius = turtle.numinput("Размер радиуса", "Введите размер рдиуса: от 17 до 170")
-text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
-# квадрат
-if text == "розовый":
-    wall_color = ("pink")
-elif text == "голубой":
-    wall_color = ("blue")
-elif text == "фиолетовый":
-    wall_color = ("violet")
-elif text == "жёлтый":
-    wall_color = ("yellow")
+for line in encrypted:
+    new_line = [chr(912 + int(item, 2)) for item in line]
+    decrypted.append(new_line)
 
-bob.color("black", wall_color)
-bob.begin_fill()
-bob.forward(line)
-bob.right(90)
-bob.forward(line)
-bob.right(90)
-bob.forward(line)
-bob.right(90)
-bob.forward(line)
-bob.end_fill()
-# 1круг
-
-bob.color("black", wall_color)
-bob.right(90)
-bob.forward(line / 2)
-bob.begin_fill()
-text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
-if text == "розовый":
-    wall_color = ("pink")
-elif text == "голубой":
-    wall_color = ("blue")
-elif text == "фиолетовый":
-    wall_color = ("violet")
-elif text == "жёлтый":
-    wall_color = ("yellow")
-bob.circle(radius)
-bob.end_fill()
-# 2круг
-
-bob.color("black", wall_color)
-bob.forward(line / 2)
-bob.right(90)
-bob.forward(line / 2)
-bob.begin_fill()
-text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
-if text == "розовый":
-    wall_color = ("pink")
-elif text == "голубой":
-    wall_color = ("blue")
-elif text == "фиолетовый":
-    wall_color = ("violet")
-elif text == "жёлтый":
-    wall_color = ("yellow")
-bob.circle(radius)
-bob.end_fill()
-# 3круг
-
-bob.color("black", wall_color)
-bob.forward(line / 2)
-bob.right(90)
-bob.forward(line / 2)
-bob.begin_fill()
-text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
-if text == "розовый":
-    wall_color = ("pink")
-elif text == "голубой":
-    wall_color = ("blue")
-elif text == "фиолетовый":
-    wall_color = ("violet")
-elif text == "жёлтый":
-    wall_color = ("yellow")
-bob.circle(radius)
-bob.end_fill()
-# 4круг
-
-bob.color("black", wall_color)
-bob.forward(line / 2)
-bob.right(90)
-bob.forward(line / 2)
-bob.begin_fill()
-text = turtle.textinput("цвет фигуры", "Введите цвет на руссссском")
-if text == "розовый":
-    wall_color = ("pink")
-elif text == "голубой":
-    wall_color = ("blue")
-elif text == "фиолетовый":
-    wall_color = ("violet")
-elif text == "жёлтый":
-    wall_color = ("yellow")
-bob.circle(radius)
-bob.end_fill()
-
-turtle.exitonclick()
+for line in decrypted:
+    print(*line)
