@@ -1,39 +1,40 @@
-# number = 9**11 * 3**20 - 3**9 - 27
-#
-# number_3 = ''
-# count_2 = 0
-#
-# while number:
-#     number_3 += str(number % 3)
-#     if number % 3 == 2:
-#         count_2 += 1
-#     number //= 3
-#
-# print(number_3[::-1])
-# print(count_2)
+# numbers = []
+# for x in '1234567':
+#     for y in range(8):
+#         number = int(f'{x}01{y}4', 9) + int(f'{x}{y}544', 8)
+#         if number % 89 == 0:
+#             numbers.append(number // 89)
+# print(sorted(numbers))
 
-# number = 36**8 + 6**20 - 12
-# number_6 = ''
-# count = 0
-# while number > 0:
-#     number_6 += str(number % 6)
-#     if number % 6 == 5:
-#         count += 1
-#     number //= 6
+
+def to_base(number: int, base: int = 16) -> list:
+    result = []
+    while number:
+        result.append(number % base)
+        number //= base
+    return result[::-1]
 #
-# print(number_6[::-1])
-# print(count)
+#
+# number = 9**8 + 3**5 - 9
+#
+# print(to_base(number))
 
-# for x in '0123456789ABCDE':
-#     number = int(f'123{x}5', 15) + int(f'1{x}233', 15)
-#     if number % 14 == 0:
-#         print(x, number // 14)
+# 11353x12_25
+def to_int(number: str, base: int):
+    number = number[::-1]
+    result = 0
+    for i in range(len(number)):
+        result += int(number[i]) * base**i
+    return result
 
-'58x723y49'
+result = []
+for x in range(25):
+    number1 = 2 + 1 * 25 + x * 25**2 + 3 * 25**3 + 5 * 25**4 + 3 * 25**5 + 1 * 25**6 + 1 * 25**7
+    number1 += 1 + 2 * 25 + x * 25**2 + 5 * 25**3 + 3 * 25**4 + 1 * 25**5
 
-for x in range(39):
-    for y in range(39):
-        num = 5 * 39**8 + 8 * 39**7 + x * 39**6 + 7 * 39**5 + 2 * 39**4 + 3 * 39**3 + y * 39**2 + 4 * 39 + 9
-        yx = y * 39 + x
-        if num % 38 == 0 and int(yx ** 0.5) == yx ** 0.5:
-            print(yx)
+    number2 = to_int('11353012', 25) + 2 * x * 25**2 + to_int('135021', 25)
+
+    if number2 % 24 == 0:
+        result.append(number2 // 24)
+
+print(max(result))

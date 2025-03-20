@@ -1,71 +1,28 @@
-# """
-# Исполнитель преобразует число на экране. У исполнителя есть три команды, которым присвоены номера:
+# def f(a, b, cnt=0):
 #
-# 1.Прибавить 1
-# 2.Прибавить 2
-# 3.Умножить на 3
+#     if a == b:
+#         return 1
+#     if a - 2 > b:
+#         return 0
 #
-# Программа для исполнителя— это последовательность команд.
-# Сколько существует программ, которые преобразуют исходное число 2 в число 15,
-# и при этом траектория вычислений содержит число 10 и не содержит числа 14?
-# """
-#
-# paths_list = [0, 0, 1]
+#     return (f(a - 1, b, cnt+1) if cnt < 2 else 0) + f(a + 5, b) + f(a * 2, b)
 #
 #
-# def paths(a, b):
-#     if len(paths_list) < b:
-#         for i in range(len(paths_list), b + 1):
-#
-#             paths_list.append(paths(a, i-1) + paths(a, i-2) + (paths(a, i // 3) if i % 3 == 0 else 0))
-#     if b == 14:
-#         paths_list[b] = 0
-#     print(paths_list)
-#     return paths_list[b]
-#     # if a > b:
-#     #     return 0
-#     # elif a == b:
-#     #     return 1
-#     # elif a == 14:
-#     #     return 0
-#     # return paths(a + 1, b) + paths(a + 2, b) + paths(a * 3, b)
-#
-#
-# # print(paths(2, 10) * paths(10, 15))
-# print(paths(2, 15))
+# print(f(5, 34))
 
-from functools import lru_cache  # кэширует вычисленные значения
-import itertools
-import fnmatch
-import ipaddress
-
-
-@lru_cache()
-def find_paths(a, b):
+def f(a, b, cnt_a=0, cnt_b=0):
+    if a < b:
+        return 0
     if a == b:
         return 1
-    elif a > b:
-        return 0
-    elif a == 25:
-        return 0
-    return find_paths(a + 3, b) + find_paths(a * 2, b) + find_paths(a * 5, b)
+    res1 = (f(a - 2, b, cnt_a + 1)) if cnt_a < 2 else 0
+    if cnt_b >= 2:
+        res2 = 0
+    else:
+        if a % 2 == 0:
+            res2 = f(a // 2, b, 0, cnt_b + 1)
+        else:
+            res2 = f(a - 7, b, 0, cnt_b + 1)
+    return res1 + res2
 
-
-def find_paths_from_5(b):
-    if len(paths) <= b:
-        for i in range(len(paths), b + 1):
-            result = find_paths_from_5(i - 3)
-            if i % 2 == 0:
-                result += find_paths_from_5(i // 2)
-            if i % 5 == 0:
-                result += find_paths_from_5(i // 5)
-            paths.append(result)
-            if i == 25:
-                paths[i] = 0
-    return paths[b]
-
-
-paths = [0, 0, 0, 0, 0, 1]
-
-# print(find_paths(5, 115))
-print(find_paths_from_5(115))
+print(f(40, 1))

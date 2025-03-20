@@ -1,27 +1,27 @@
-"""
-F(n)=n, если n≥2025,
-F(n)=n+3+F(n+3), если n<2025.
+# import sys
+#
+#
+# sys.setrecursionlimit(3000)
+#
+#
+# def f(n):
+#     # return n if n < 11 else n + f(n - 1)
+#     if n < 11:
+#         return n
+#     return n + f(n - 1)
+#
+#
+# print(f(2024) - f(2021))
 
-Чему равно значение выражения F(23)−F(21)?
-"""
+f_list = [0, 1, 2, 3, 4]
 
 
 def f(n):
-    if n >= 2025:
-        return n
-    return n + 3 + f(n+3)
-
-
-f_list = [0] * 2025 + [2025, 2026, 2027]
-
-
-def f2(n):
-    if n < 2025:
-        for i in range(2024, n - 1, -1):
-            f_list[i] = i + 3 + f2(i+3)
-            print(f'{i=} {f_list[i]=}')
+    if n > len(f_list):
+        for i in range(len(f_list), n + 1):
+            f_list.append(2 * i * f(i - 4))
     return f_list[n]
 
 
-print(f(23) - f(21))
-print(f2(23) - f2(21))
+print((f(13766) - 9 * f(13762)) / f(13758))
+

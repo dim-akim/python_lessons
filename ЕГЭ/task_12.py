@@ -1,14 +1,16 @@
-for n in range(4, 10000):
-    s = '5' + '2' * n
+def func(n: str):
+    while '12' in n or '322' in n or '222' in n:
+        if '12' in n:
+            n = n.replace('12', '2', 1)
+        if '322' in n:
+            n = n.replace('322', '21', 1)
+        if '222' in n:
+            n = n.replace('222', '3', 1)
+    return n
 
-    while '52' in s or '2222' in s or '1122' in s:
-        if '52' in s:
-            s = s.replace('52', '11', 1)
-        if '2222' in s:
-            s = s.replace('2222', '5', 1)
-        if '1122' in s:
-            s = s.replace('1122', '25', 1)
 
-    numbers = sum(int(i) for i in s)
-    if numbers == 64:
+for n in range(3, 10000):
+    s = '1' + '2' * n
+    s = func(s)
+    if sum(int(i) for i in s) == 15:
         print(n)
