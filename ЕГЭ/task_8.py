@@ -1,4 +1,4 @@
-count = 0
+# count = 0
 # for n1 in 'ЕЭ':
 #     for n2 in 'ЕГЭ':
 #         for n3 in 'ЕГЭ':
@@ -48,3 +48,26 @@ count = 0
 #                 for n5 in alphabet:
 #                     words.append(n1 + n2 + n3 + n4 + n5)
 # print(words[209])
+def f(s):
+    for i in range(len(s) - 1):
+        if int(s[i]) % 2 == int(s[i+1]) % 2:
+            return False
+    return True
+
+
+count = 0
+# for number in range(1000, 10000):
+#     s = str(number)
+#     if len(s) == len(set(s)) and f(s):
+#         count += 1
+#         print(f'{count=} {s=}')
+for number in range(1000, 10000):
+    s = str(number)
+    if len(s) == len(set(s)):
+        flag = True
+        for i in range(len(s) - 1):
+            if int(s[i]) % 2 == int(s[i + 1]) % 2:
+                flag = False
+        if flag:
+            count += 1
+            print(f'{count=} {s=}')
